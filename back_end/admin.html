@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CuBe!</title>
+    <script src="./app.js"></script>
+  </head>
+  <body>
+    
+    <p type="text" name="관리자메뉴"  maxlength=20 size=20 > 관리자 메뉴입니다. </p>
+
+    <form action="/adminsee" method="post">
+          <tr>
+              <td><input type="submit" value="상품메뉴"></td>
+          </tr>
+          
+      </table>
+  </form>
+      <form action="/reg" method="post">
+        <table>
+        <tr>
+            <td>제품 이름 : </td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>분류 : 1:음식,  2:의류, 3:전자제품, 4:가구, 5:문구 </td>
+            <td><input type="text" name= "category"></td>
+        </tr>
+        <tr>
+            <td>원가 : </td>
+            <td><input type="text" name="cost"></td>
+        </tr>
+        <tr>
+            <td>판매가 : </td>
+            <td><input type="text" name="price"></td>
+        </tr>
+        <tr>
+            <td>순이익 : </td>
+            <td><input type="text" name="profit"></td>
+        </tr>
+        <tr>
+            <td>제품설명 : </td>
+            <td><input type="text" name="content"></td>
+        </tr>   
+        <tr>
+            <td>이미지 : </td>
+            <td><input type="text" name="image"></td>
+        </tr>
+            <tr>
+                <td><input type="submit" value="상품등록"></td>
+            </tr>
+            
+        </table>
+    </form>
+    <form action="/handling" method="post">
+        <tr>
+            <td>배송할 주문 : </td>
+            <td><input type="text" name="id"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="주문처리"></td>
+        </tr>
+    </form>
+<form action="/" method="get">
+    <tr>
+        <td><input type="submit" value="처음화면으로"></td>
+    </tr>
+    
+    </table>
+</form>
+  </body>
+</html>
