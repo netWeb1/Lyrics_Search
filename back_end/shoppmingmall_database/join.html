@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CuBe!</title>
+    <script src="./app.js"></script>
+  </head>
+  <body><!--
+      <p>
+        <div type="text" name="회원가입" placeholder="회원가입" maxlength=20 size=20 ></div>
+      </p> -->
+
+      <form action="/signup" method="post">
+        <table>
+            <tr>
+                <td>아이디 : </td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>비번 : </td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>이름 : </td>
+                <td><input type="text" name= "name"></td>
+            </tr>
+            <tr>
+                <td>이메일 : </td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>우편번호 : </td>
+                <td><input type="text" name="address_num"></td>
+            </tr>
+            <tr>
+                <td>주소 : </td>
+                <td><input type="text" name="address"></td>
+            </tr>
+            <tr>
+                <td>핸드폰번호 : </td>
+                <td><input type="text" name="phone"></td>
+            </tr>
+            <tr>
+                <td>관리자 가입코드 : </td>
+                <td><input type="text" name="code"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="가입"></td>
+            </tr>
+        </table>
+    </form>
+  </body>
+</html>
