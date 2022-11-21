@@ -1,0 +1,42 @@
+.Header {
+  display: flex;
+  background-color: #91a7ff;
+  font-size: 10px;
+  padding-left: 20px;
+  justify-content: space-between;
+}
+
+.Header .homeTitle {
+  display: flex;
+}
+.Header img {
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+}
+
+.Header h1 {
+  margin-left: 20px;
+}
+
+.Header .signInBtn {
+  padding-left: 20px;
+  padding-right: 20px;
+  block-size: 20px;
+  cursor: pointer;
+  border: 5px;
+  background-color: #91a7ff;
+  color: white;
+}
+
+.Header .signUpBtn {
+  padding-left: 20px;
+  padding-right: 20px;
+  block-size: 20px;
+  cursor: pointer;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+  background-color: #91a7ff;
+  color: white;
+}
