@@ -1,0 +1,36 @@
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.signupMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signupMain .signupForm .formInputBlock {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.signupMain .signupForm .formInputBlock label {
+  font-size: 14px;
+}
+
+.signupMain .signupForm .formInputBlock input {
+  width: 10cm;
+  height: 1cm;
+  border-radius: 3px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+
+.signupMain .signInBtn {
+  width: 10.2cm;
+  height: 1.5cm;
+  background-color: #91a7ff;
+  border-radius: 3px;
+  border: 1px gray solid;
+}
