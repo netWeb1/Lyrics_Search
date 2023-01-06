@@ -57,9 +57,9 @@ app.post('/search',(req,res)=>{
 
 })
 
-app.post('/process/login', (req,res) => {
+app.post('/signin', (req,res) => {
     
-    console.log('/process/login 호춛됨' + req)
+    console.log('/process/signin 호춛됨' + req)
 
     const paramId = req.body.id;
     const paramPassword = req.body.password;
@@ -107,8 +107,8 @@ app.post('/process/login', (req,res) => {
 
 })
 
-app.post('/process/adduser', (req,res)=>{
-    console.log('/process/adduesr 호춛됨' + req)
+app.post('/signup', (req,res)=>{
+    console.log('/signup 호춛됨' + req)
 
     const paramId = req.body.id;
     const paramName = req.body.name;
