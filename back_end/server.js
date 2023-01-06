@@ -46,6 +46,7 @@ app.post('/findpassword',(req,res)=>{
            					res.end()
 							return;
                         }
+                        
                         if ( user.length > 0){
                             res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
                             res.write('<h1>찾는 비밀번호 : </h1>')
