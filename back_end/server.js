@@ -19,6 +19,49 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use('/public', static(path.join(__dirname, 'public')));
 
+app.post('/findpassword',(req,res)=>{
+    console.log('비밀번호 찾기')
+    const paramId = req.body.id;
+    const paramAge = req.body.age;
+    const paramName= req.body.name;
+
+    pool.getConnection((err, conn) => {
+        if(err) {
+            conn.release();
+            console.log("Mysql getConneSSction error. aborted");
+            res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
+            res.write('<h1>DB서버 연결 실패</h1>')
+            res.end()
+            return;
+        }
+		const exec = conn.query(`select * from users where id = ? and age = ? and name = ? ;`,
+                    [paramId, paramAge, paramName],
+                    (err,user)=>{
+                        conn.release();
+                        console.log('실행된 sql query: ' + exec.sql)
+                        if(err){
+							console.log("Mysql getConnection error. aborted");
+							console.dir(err);
+                            res.write('<h1>SQL 오류</h1>')
+           					res.end()
+							return;
+                        }
+                        if ( user.length > 0){
+                            res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
+                            res.write('<h1>찾는 비밀번호 : </h1>')
+                            res.write(user[0].password)
+                            console.log(user[0].password)
+                            res.end()
+                        }
+                        else{
+                            res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
+                            res.write('<h1>안됨</h1>')
+                            res.end()
+                        }
+                    })
+	})
+})
+
 app.post('/search',(req,res)=>{
 	console.log('노래 검색')
 	const paramLyrics = req.body.Lyrics;
