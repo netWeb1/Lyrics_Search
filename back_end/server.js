@@ -19,20 +19,20 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use('/public', static(path.join(__dirname, 'public')));
 
-app.post('/process/search',(req,res)=>{
+app.post('/search',(req,res)=>{
 	console.log('노래 검색')
 	const paramLyrics = req.body.Lyrics;
 	pool.getConnection((err, conn) => {
         if(err) {
             conn.release();
-            console.log("Mysql getConnection error. aborted");
+            console.log("Mysql getConneSSction error. aborted");
             res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
             res.write('<h1>DB서버 연결 실패</h1>')
             res.end()
             return;
         }
-		const exec = conn.query(`select * from songs where Lyrics like '%동해%';`,
-                    [paramLyrics],
+		const exec = conn.query(`select * from songs where Lyrics like ? ;`,
+                    ['%'+ paramLyrics + '%'],
                     (err,song)=>{
                         conn.release();
                         console.log('실행된 sql query: ' + exec.sql)
@@ -46,6 +46,7 @@ app.post('/process/search',(req,res)=>{
                         if ( song.length > 0){
                             res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
                             res.write('<h1>제목 가수 가사 등등 노래의 정보</h1>')
+                            console.log(song)
                         }
                         else{
                             res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
