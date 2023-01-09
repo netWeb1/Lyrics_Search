@@ -20,6 +20,54 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use('/public', static(path.join(__dirname, 'public')));
 
+app.post('/findid',(req, res) => {
+    console.log("/user/findid called......");
+    const paramName = req.body.name;
+    const paramAge = req.body.age;
+
+    console.log('/findd 호출됨' + req)
+
+    pool.getConnection((err, conn) => {
+        if(err) { //에러 날 시
+            conn.release();
+            console.log("Mysql getConnection error. aborted");
+            res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
+            res.write('<h1>DB서버 연결 실패</h1>')
+            res.end()
+            return;
+        }
+        const exec = conn.query(`select * from users where name = ? and age = ?;`,
+                    [paramName,paramAge], //나중에 이메일 추가 예정
+                    (err,result)=>{
+                        conn.release();
+                        console.log('실행된 SQL : ' + exec.sql)
+                        if(err){
+                            console.log('error')
+                            console.dir(err);
+                            res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
+                            res.write('<h1>오류가 발생하였습니다.</h2>')
+                            res.end()
+                            return;
+                        }
+                        if (result.length > 0){
+                            console.log('[&s]님의 아이디는 [&s]입니다.', result[0].name, result[0].id);
+                            console.log('아이디를 찾았습니다.')
+                            res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
+                            res.write('<h2>아이디 찾기</h2>')
+                            res.end()
+                        }
+                        else{
+                            console.log('일치하는 아이디가 존재하지 않습니다.');
+                            console.log('아이디를 찾지 못하였습니다.')
+                            res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
+                            res.write('<h2>아이디 찾기에 실패하였습니다.</h2>')
+                            res.end()
+                        }
+                    }
+        )
+    })
+});
+
 app.post('/findpassword', (req, res) => {
     console.log('비밀번호 찾기')
     const paramId = req.body.id;
@@ -207,4 +255,3 @@ app.get('/signup', (req, res) => {
 
 app.listen(3000, () => {
     console.log('3000포트 시작')
-})
