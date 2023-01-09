@@ -108,13 +108,12 @@ app.post('/process/login', (req,res) => {
 
 })
 //아이디 찾기
-app.post('/process/findId',(req, res) => {
+app.post('/findid',(req, res) => {
     console.log("/user/findid called......");
     const paramName = req.body.name;
-    const paramId = req.body.id;
     const paramAge = req.body.age;
 
-    console.log('/process/findId 호춛됨' + req)
+    console.log('/findId 호출됨' + req)
 
     pool.getConnection((err, conn) => {
         if(err) { //에러 날 시
@@ -125,8 +124,8 @@ app.post('/process/findId',(req, res) => {
             res.end()
             return;
         }
-        const exec = conn.query(`select id, name from users where id = ?? and name = ??`, //id랑 name을 같게 하는 걸 생각을 해봐야겠다..
-                    [paramId, paramName],
+        const exec = conn.query(`select * from users where name = ? and age = ?;`,
+                    [paramName,paramAge], //나중에 이메일 추가 예정
                     (err,result)=>{
                         conn.release();
                         console.log('실행된 SQL : ' + exec.sql)
@@ -139,7 +138,7 @@ app.post('/process/findId',(req, res) => {
                             return;
                         }
                         if (result.length > 0){
-                            console.log('[&s]님의 아이디는 [&s]입니다.', rows[0].name, paramId);
+                            console.log('[&s]님의 아이디는 [&s]입니다.', result[0].name, result[0].id);
                             console.log('아이디를 찾았습니다.')
                             res.writeHead('200', {'Content-Type':'text/html; charset=utf8'})
                             res.write('<h2>아이디 찾기</h2>')
@@ -156,6 +155,7 @@ app.post('/process/findId',(req, res) => {
         )
     })
 });
+
 
 
 
