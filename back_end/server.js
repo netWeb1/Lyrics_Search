@@ -25,7 +25,7 @@ app.post('/findid',(req, res) => {
     const paramName = req.body.name;
     const paramAge = req.body.age;
 
-    console.log('/findd 호출됨' + req)
+    console.log('/findid 호출됨' + req)
 
     pool.getConnection((err, conn) => {
         if(err) { //에러 날 시
