@@ -22,12 +22,8 @@
         </table>
         <input type="submit" value="로그인">
     </form>
-    <form method="post" action="/findpassword">
+    <form method="post" action="/findid">
         <table>
-            <tr>
-                <td><label>아이디</label></td>
-                <td><input type="text" name="id"></td>
-            </tr>
             <tr>
                 <td><label>이름</label></td>
                 <td><input type="text" name="name"></td>
@@ -37,19 +33,39 @@
                 <td><input type="text" name="age"></td>
             </tr>
         </table>
-        <input type="submit" value="비밀번호 찾기">
-    </form>
-    <h1>노래 검색</h1>
-    <br>
-    <form method="post" action="/search">
-        <table>
-            <tr>
-                <td><label>노래가사</label></td>
-                <td><input type="text" name="Lyrics"></td>
-            </tr>
-        </table>
-        <input type="submit" value="검색">
-    </form>
+        <in put type="submit" value="아이디 찾기">
+            </form>
+            <form method="post" action="/findpassword">
+                <table>
+                    <tr>
+                        <td><label>아이디</label></td>
+                        <td><input type="text" name="id"></td>
+                    </tr>
+                    <tr>
+                        <td><label>이름</label></td>
+                        <td><input type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <td><label>나이</label></td>
+                        <td><input type="text" name="age"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="비밀번호 찾기">
+            </form>
+            <form method="get" action="/signup">
+                <input type="submit" value="회원가입">
+            </form>
+            <h1>노래 검색</h1>
+            <br>
+            <form method="post" action="/search">
+                <table>
+                    <tr>
+                        <td><label>노래가사</label></td>
+                        <td><input type="text" name="Lyrics"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="검색">
+            </form>
 
 </body>
 
