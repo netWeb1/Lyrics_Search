@@ -13,7 +13,7 @@ function Search() {
     };
 
     const request = axios
-      .post('/api/lyrics', body)
+      .post('/api/abcd', body)
       .then((response) => response.data); // 노래정보, 가사 등 포함 ( json형식으로 받아옴)
 
     check.innerHTML = body.lyrics;
